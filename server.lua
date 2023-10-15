@@ -4,19 +4,13 @@ local nivelAlertaActual = 0
 RegisterCommand("alertaslspd", function(source)
     local Player = QBCore.Functions.GetPlayer(source)
 
-    print("1")
-
     if Player and Player.PlayerData.job.name == 'police' then
-        print("2")
         if Player.PlayerData.job.onduty then
-            print("3")
             TriggerClientEvent("neko_alertaslspd:client:openMenu", source)
         else
-            print("4")
             TriggerClientEvent('QBCore:Notify', source, 'No te encuentras de servicio')
         end
     else
-        print("5")
         TriggerClientEvent('QBCore:Notify', source, 'No eres del cuerpo policial')
     end
 end, false)

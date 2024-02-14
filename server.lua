@@ -1,5 +1,17 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 local nivelAlertaActual = 0
+PlayerData = nil
+
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
+    QBCore.Functions.GetPlayerData(function(PlayerData)
+        PlayerData = PlayerData.job
+    end)
+end)
+
+RegisterNetEvent('QBCore:Client:OnJobUpdate', function(JobInfo)
+    PlayerData = JobInfo
+end)
+
 
 RegisterCommand("alertaslspd", function(source)
     local Player = QBCore.Functions.GetPlayer(source)

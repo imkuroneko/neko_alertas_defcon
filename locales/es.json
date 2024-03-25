@@ -1,0 +1,29 @@
+{
+    "menu_title" : "🚓 Alertas DEFCON",
+    "menu_title_green" : "Alerta Verde",
+    "menu_description_green" : "Cambiar el estado DEFCON a alerta verde",
+    "menu_title_yellow" : "Alerta Amarilla",
+    "menu_description_yellow" : "Cambiar el estado DEFCON a alerta amarilla",
+    "menu_title_red" : "Alerta Roja",
+    "menu_description_red" : "Cambiar el estado DEFCON a alerta roja",
+
+    "command_help" : "Abrir menú de estado DEFCON",
+
+    "player_not_duty" : "No te encuentras en servicio",
+    "player_not_police" : "No perteneces al cuerpo policial",
+
+    "update_status_current" : "Este ya es el estado actual del DEFCON",
+    "update_status_success" : "Estado DEFCON actualizado exitosamente",
+
+    "webhook_public_title" : "Nuevo estado de Alerta DEFCON",
+
+    "webhook_public_title_green" : "Se ha establecido la alerta verde",
+    "webhook_public_description_green" : "webhook_public_description_green...",
+    "webhook_public_title_yellow" : "Se ha establecido la alerta amarilla",
+    "webhook_public_description_yellow" : "webhook_public_description_yellow...",
+    "webhook_public_title_red" : "Se ha establecido la alerta roja",
+    "webhook_public_description_red" : "webhook_public_description_red...",
+
+    "webhook_log_title" : "Actualización de estado DEFCON",
+    "webhook_log_description" : "El oficial `%s` (CID: `%s`) ha cambiado el estado DEFCON."
+}

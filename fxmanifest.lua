@@ -13,4 +13,4 @@ server_scripts { 'config.lua', 'server.lua' }
 client_scripts { 'client.lua' }
 
 ui_page        'ui/index.html'
-files          { 'locales/es.json', 'ui/**' }
+files          { 'locales/*.json', 'ui/**' }

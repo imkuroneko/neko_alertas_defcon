@@ -1,0 +1,23 @@
+{
+    "menu_title": "🚓 DEFCON Alerts",
+    "menu_title_green": "Green Alert",
+    "menu_description_green": "Change DEFCON status to green alert",
+    "menu_title_yellow": "Yellow Alert",
+    "menu_description_yellow": "Change DEFCON status to yellow alert",
+    "menu_title_red": "Red Alert",
+    "menu_description_red": "Change DEFCON status to red alert",
+    "command_help": "Open DEFCON status menu",
+    "player_not_duty": "You are not on duty",
+    "player_not_police": "You are not a member of the police force",
+    "update_status_current": "This is already the current DEFCON status",
+    "update_status_success": "DEFCON status updated successfully",
+    "webhook_public_title": "New DEFCON Alert Status",
+    "webhook_public_title_green": "Green alert has been set",
+    "webhook_public_description_green": "webhook_public_description_green...",
+    "webhook_public_title_yellow": "Yellow alert has been set",
+    "webhook_public_description_yellow": "webhook_public_description_yellow...",
+    "webhook_public_title_red": "Red alert has been set",
+    "webhook_public_description_red": "webhook_public_description_red...",
+    "webhook_log_title": "DEFCON Status Update",
+    "webhook_log_description": "Officer %s (CID: %s) has changed the DEFCON status."
+}

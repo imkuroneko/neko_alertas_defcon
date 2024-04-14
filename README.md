@@ -3,7 +3,9 @@
 <p align="center">
   <img src="https://img.shields.io/github/repo-size/imkuroneko/neko_alertas_defcon?style=flat"/> &nbsp;
   <img src="https://img.shields.io/github/languages/top/imkuroneko/neko_alertas_defcon?style=flat"/> &nbsp;
-  <img src="https://img.shields.io/github/last-commit/imkuroneko/neko_alertas_defcon?color=pink&style=flat"/>
+  <img src="https://img.shields.io/github/last-commit/imkuroneko/neko_alertas_defcon?color=pink&style=flat"/> &nbsp;
+  <img src="https://img.shields.io/github/downloads/imkuroneko/neko_alertas_defcon/total?logo=github"/> &nbsp;
+  <img src="https://img.shields.io/github/v/release/imkuroneko/neko_alertas_defcon?logo=github"/> &nbsp;
 </p>
 
 Script para servidores de FiveM basado en QBCore enfocada a la facción policial para establecer el estado DEFCON en la ciudad, con posibilidad de envío de logs a Discord

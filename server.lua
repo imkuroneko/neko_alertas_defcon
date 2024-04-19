@@ -1,7 +1,8 @@
+local filePath = GetResourcePath(GetCurrentResourceName()).."/data.json"
 local QBCore = exports['qb-core']:GetCoreObject()
+
 lib.locale()
-SendedWebhookRestart = false
-DefconCurrentStatus = 'g'
+DefconCurrentStatus = nil
 
 -- ===== Registrar comando
 lib.addCommand(Config.Command, { help = locale('command_help'), params = {} }, function(source, args)
@@ -27,6 +28,8 @@ AddEventHandler('neko_alertasdefcon:server:change_status', function(data)
     if data.status == DefconCurrentStatus then
         TriggerClientEvent('ox_lib:notify', source, { description = locale('update_status_current') , type = 'info' })
     else
+        UpdateLatestStatus(data.status)
+
         TriggerClientEvent('ox_lib:notify', source, { description = locale('update_status_success') , type = 'success' })
         DefconCurrentStatus = data.status
         SendWebhookPublic()
@@ -34,16 +37,18 @@ AddEventHandler('neko_alertasdefcon:server:change_status', function(data)
     end
 end)
 
+-- ===== Thread
 Citizen.CreateThread(function()
-    if not SendedWebhookRestart then
-        SendWebhookPublic()
-        SendedWebhookRestart = true
-    end
-
     while true do
         Citizen.Wait(5000)
         TriggerClientEvent('neko_alertas_defcon:client:set_current_status', -1, { status = DefconCurrentStatus })
     end
+end)
+
+-- ===== On Script Start
+AddEventHandler('onResourceStart', function(resourceName)
+    if GetCurrentResourceName() ~= resourceName then return end
+    DefconCurrentStatus = GetLatestStatus()
 end)
 
 -- ===== Funciones
@@ -100,4 +105,28 @@ function SendContentToDiscord(webhookUrl, tagEveryone, embedContent)
     if tagEveryone then contentData['content'] = '@everyone' end
 
     PerformHttpRequest(webhookUrl, function(e, t, h) end, 'POST', json.encode(contentData), { ['Content-Type'] = 'application/json' })
+end
+
+-- ===== Persistance ♥
+function GetLatestStatus()
+    local file = io.open(filePath, "r")
+    if file then
+        local contents = file:read("*a")
+        contents = json.decode(contents);
+        io.close(file)
+        return contents.status
+    else
+        file = io.open(filePath, "w+")
+        file:write(json.encode({ status = 'g' }, { indent = true }))
+        io.close(file)
+
+        return 'g'
+    end
+end
+
+function UpdateLatestStatus(newStatus)
+    local file = io.open(filePath, "w+")
+    file:write(json.encode({ status = newStatus }, { indent = true }))
+    io.close(file)
+    DefconCurrentStatus = newStatus
 end

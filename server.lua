@@ -49,6 +49,7 @@ end)
 AddEventHandler('onResourceStart', function(resourceName)
     if GetCurrentResourceName() ~= resourceName then return end
     DefconCurrentStatus = GetLatestStatus()
+    print("^5El script ha cargado exitosamente")
 end)
 
 -- ===== Funciones

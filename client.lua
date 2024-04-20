@@ -1,6 +1,7 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 lib.locale()
 local defconMenu = {}
+PlayerLoaded = false
 
 -- ===== Armar estructura del menú
 defconMenu = {
@@ -40,7 +41,7 @@ lib.registerContext(defconMenu)
 RegisterNetEvent('neko_alertas_defcon:client:open_menu')
 AddEventHandler('neko_alertas_defcon:client:open_menu', function()
     QBCore.Functions.GetPlayerData(function(PlayerData)
-        if PlayerData.job.name ~= 'police' then
+        if PlayerData.job.type ~= 'leo' then
             lib.notify({ description = locale('player_not_police') , type = 'error' })
         else
             if not PlayerData.job.onduty then
@@ -55,5 +56,19 @@ end)
 -- ===== Enviar el evento de estado al cliente de los jugadores
 RegisterNetEvent('neko_alertas_defcon:client:set_current_status')
 AddEventHandler('neko_alertas_defcon:client:set_current_status', function(data)
-    SendNUIMessage({ alert = data.status })
+    if PlayerLoaded then
+        SendNUIMessage({ alert = data.status })
+    else
+        SendNUIMessage({ alert = 'g' })
+    end
+end)
+
+
+
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
+    PlayerLoaded = true
+end)
+
+RegisterNetEvent('QBCore:Client:OnPlayerUnload', function()
+    PlayerLoaded = false
 end)

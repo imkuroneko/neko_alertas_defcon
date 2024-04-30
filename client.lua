@@ -72,3 +72,8 @@ end)
 RegisterNetEvent('QBCore:Client:OnPlayerUnload', function()
     PlayerLoaded = false
 end)
+
+AddEventHandler('onResourceStart', function(resourceName)
+    if GetCurrentResourceName() ~= resourceName then return end
+    PlayerLoaded = true
+end)

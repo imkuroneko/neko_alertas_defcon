@@ -8,7 +8,7 @@ DefconCurrentStatus = nil
 lib.addCommand(Config.Command, { help = locale('command_help'), params = {} }, function(source, args)
     local Player = QBCore.Functions.GetPlayer(source)
 
-    if Player and Player.PlayerData.job.name == 'police' then
+    if Player and Player.PlayerData.job.type == 'leo' then
         if Player.PlayerData.job.onduty then
             TriggerClientEvent('neko_alertas_defcon:client:open_menu', source)
         else
@@ -26,11 +26,11 @@ AddEventHandler('neko_alertasdefcon:server:change_status', function(data)
     if data.status ~= 'g' and data.status ~= 'y' and data.status ~= 'r' then return end
 
     if data.status == DefconCurrentStatus then
-        TriggerClientEvent('ox_lib:notify', source, { description = locale('update_status_current') , type = 'info' })
+        TriggerClientEvent('ox_lib:notify', src, { description = locale('update_status_current') , type = 'info' })
     else
         UpdateLatestStatus(data.status)
 
-        TriggerClientEvent('ox_lib:notify', source, { description = locale('update_status_success') , type = 'success' })
+        TriggerClientEvent('ox_lib:notify', src, { description = locale('update_status_success') , type = 'success' })
         DefconCurrentStatus = data.status
         SendWebhookPublic()
         SendWebhookLog(src)

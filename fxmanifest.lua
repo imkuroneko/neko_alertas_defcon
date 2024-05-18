@@ -5,7 +5,7 @@ lua54       'yes'
 description 'Sistemas de alertas (DEFCON) para la policía'
 author      'KuroNeko'
 -- ===========================================================
-version     '1.1.4'
+version     '1.1.5'
 
 -- ===========================================================
 shared_scripts { '@ox_lib/init.lua' }

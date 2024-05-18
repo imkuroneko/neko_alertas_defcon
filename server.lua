@@ -7,8 +7,8 @@ DefconCurrentStatus = nil
 -- ===== Registrar comando
 lib.addCommand(Config.Command, { help = locale('command_help'), params = {} }, function(source, args)
     local Player = QBCore.Functions.GetPlayer(source)
-
-    if Player and Player.PlayerData.job.type == 'leo' then
+    if not Player then return end -- no existe entonces se ignora por defecto (fake o deslogueado)
+    if Player.PlayerData.job.type == 'leo' then
         if Player.PlayerData.job.onduty then
             TriggerClientEvent('neko_alertas_defcon:client:open_menu', source)
         else
